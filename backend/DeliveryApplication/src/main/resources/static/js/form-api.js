@@ -35,8 +35,8 @@ class FormAPI {
     try {
       const data = {
         name: form.querySelector('#name')?.value,
-        taxaFixa: parseFloat(form.querySelector('#taxaFixa')?.value),
-        reaisPorKm: parseFloat(form.querySelector('#reaisPorKm')?.value),
+        minTaxa: parseFloat(form.querySelector('#taxaFixa')?.value),
+        priceKM: parseFloat(form.querySelector('#reaisPorKm')?.value),
       };
 
       console.log('📤 Enviando motoboy:', data);
