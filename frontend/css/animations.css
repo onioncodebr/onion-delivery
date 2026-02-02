@@ -72,12 +72,12 @@ table tbody tr:hover {
   background-color: var(--border-soft);
 }
 
-/* Skeleton loader */
+/* Skeleton loader - uses theme colors with accent tint */
 .skeleton {
   background: linear-gradient(
     90deg,
     var(--bg-soft) 0%,
-    var(--border) 50%,
+    var(--border-soft) 50%,
     var(--bg-soft) 100%
   );
   background-size: 1000px 100%;
@@ -108,7 +108,7 @@ a {
   transition: all 0.3s ease;
 }
 
-/* Loading state */
+/* Loading state - uses accent color from current theme */
 .loading {
   opacity: 0.6;
   pointer-events: none;

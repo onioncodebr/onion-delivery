@@ -31,7 +31,7 @@
   }
 
   nav {
-    margin-top: 10px;
+    margin-top: 0px;
     gap: 16px;
     width: 100%;
     overflow-x: auto;
@@ -40,7 +40,9 @@
 
   /* Main */
   main {
+    margin-top: 7%;
     padding: 16px;
+    padding-bottom: 80px;
   }
 
   /* Formulário */

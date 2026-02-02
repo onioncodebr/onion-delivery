@@ -36,7 +36,7 @@ class ThemeToggle {
     // Use external monochrome SVG files (path adjusted for pages)
     const base = location.pathname.includes('/pages/') ? '../' : '';
     const img = document.createElement('img');
-    img.src = base + (this.theme === 'dark' ? 'img/sun.svg' : 'img/moon.svg');
+    img.src = base + (this.theme === 'light' ? 'img/sun.svg' : 'img/moon.svg');
     img.alt = 'Tema';
     img.width = 20;
     img.height = 20;
@@ -74,11 +74,8 @@ class ThemeToggle {
     this.applyTheme(this.theme);
     localStorage.setItem('theme', this.theme);
 
-    const toggleBtn = document.getElementById('theme-toggle');
-    if (toggleBtn) {
-      const imgEl = document.querySelector('#theme-toggle img');
-      if (imgEl) imgEl.src = (location.pathname.includes('/pages/') ? '../' : '') + (this.theme === 'dark' ? 'img/sun.svg' : 'img/moon.svg');
-    }
+    const imgEl = document.querySelector('#theme-toggle img');
+    if (imgEl) imgEl.src = (location.pathname.includes('/pages/') ? '../' : '') + (this.theme === 'light' ? 'img/sun.svg' : 'img/moon.svg');
   }
 
   /**
@@ -102,16 +99,27 @@ class ThemeToggle {
       root.style.setProperty('--text-soft', '#555555');
       root.style.setProperty('--border', '#e0e0e0');
       root.style.setProperty('--border-soft', '#d0d0d0');
+      root.style.setProperty('--accent', '#22c55e');
+      root.style.setProperty('--accent-soft', '#86efac');
+      root.style.setProperty('--accent-rgb', '34, 197, 94');
     } else {
+      // default dark
       root.style.setProperty('--bg', '#1d2021');
       root.style.setProperty('--bg-soft', '#282828');
       root.style.setProperty('--text', '#ebdbb2');
       root.style.setProperty('--text-soft', '#d5c4a1');
       root.style.setProperty('--border', '#3c3836');
       root.style.setProperty('--border-soft', '#504945');
+      root.style.setProperty('--accent', '#22c55e');
+      root.style.setProperty('--accent-soft', '#86efac');
+      root.style.setProperty('--accent-rgb', '34, 197, 94');
     }
 
     document.body.setAttribute('data-theme', theme);
+
+    // Update toggle icon mapping: sun for light, moon otherwise
+    const imgEl = document.querySelector('#theme-toggle img');
+    if (imgEl) imgEl.src = (location.pathname.includes('/pages/') ? '../' : '') + (theme === 'light' ? 'img/sun.svg' : 'img/moon.svg');
   }
 }
 

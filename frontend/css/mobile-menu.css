@@ -1,7 +1,7 @@
 /* ===== MENU MOBILE HAMBURGER ===== */
 
 .menu-toggle {
-  display: none;
+  display: none !important;
   background: transparent;
   border: none;
   color: var(--text);

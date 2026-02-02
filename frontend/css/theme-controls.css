@@ -22,6 +22,8 @@
   justify-content: center;
   transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  margin: 0 !important; /* override global button top margin */
+  align-self: center;   /* ensure centered in header flex container */
 }
 
 /* No color change on hover; only scale */
@@ -37,7 +39,7 @@
 
 .theme-btn:focus-visible,
 .settings-btn:focus-visible {
-  outline: 2px solid rgba(34, 197, 94, 0.18);
+  outline: 2px solid rgba(var(--accent-rgb), 0.18);
   outline-offset: 2px;
 }
 
@@ -79,6 +81,8 @@
   width: 20px;
   height: 20px;
   display: block;
+  line-height: 0;
+  vertical-align: middle;
 }
 
 /* Match header text color (default) */
