@@ -1,0 +1,136 @@
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* ===== TABLET E TELAS MÉDIAS (max-width: 1024px) ===== */
+@media (max-width: 1024px) {
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .filters {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .filters > *:last-child {
+    grid-column: span 2;
+  }
+}
+
+/* ===== MOBILE (max-width: 768px) ===== */
+@media (max-width: 768px) {
+  /* Header */
+  header {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    min-height: auto;
+    grid-template-columns: unset;
+  }
+
+  .logo {
+    margin-bottom: 16px;
+  }
+
+  nav {
+    margin-top: 10px;
+    gap: 16px;
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+
+  /* Main */
+  main {
+    padding: 16px;
+  }
+
+  /* Formulário */
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Filtros */
+  .filters {
+    grid-template-columns: 1fr;
+  }
+
+  .filters > *:last-child {
+    grid-column: auto;
+  }
+
+  /* Botão */
+  button {
+    width: 100%;
+    padding: 12px;
+  }
+
+  /* Seção */
+  section {
+    padding: 16px;
+    overflow-x: auto;
+  }
+
+  /* Tabela */
+  table {
+    min-width: 100%;
+  }
+
+  th,
+  td {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  /* Auth */
+  .auth-layout {
+    padding: 16px;
+  }
+
+  .auth-form {
+    max-width: 100%;
+  }
+
+  .auth-form-wrapper {
+    max-width: 100%;
+  }
+}
+
+/* ===== SMALL MOBILE (max-width: 480px) ===== */
+@media (max-width: 480px) {
+  header {
+    padding: 12px 16px;
+  }
+
+  .logo {
+    font-size: 16px;
+  }
+
+  nav {
+    gap: 12px;
+  }
+
+  nav a {
+    font-size: 12px;
+  }
+
+  main {
+    padding: 12px;
+  }
+
+  form {
+    padding: 16px;
+  }
+
+  section {
+    padding: 12px;
+  }
+
+  button {
+    font-size: 12px;
+    padding: 10px 16px;
+  }
+
+  footer {
+    font-size: 10px;
+    padding: 12px;
+  }
+}
