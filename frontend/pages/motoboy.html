@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Onion Delivery</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">Onion Delivery</div>
+
+  <nav>
+    <a href="../index.html" >Início</a>
+    <a href="entrega.html">Entregas</a>
+    <a href="motoboy.html" class="active">Motoboys</a>
+    <a href="#">Relatórios</a>
+  </nav>
+
+  <div></div>
+</header>
+
+
+<main>
+
+  <form id="motoboyForm">
+   <div class="form-grid">
+  <label>
+    Nome
+    <input type="text" id="name" required>
+  </label>
+
+  <label>
+    Taxa Fixa
+    <input type="number" id="taxaFixa" required>
+  </label>
+
+  <label>
+    R$/Km
+    <input type="number" id="reaisPorKm" required>
+  </label>
+</div>
+
+<button type="submit">Criar Motoboy</button>
+  </form>
+
+  <script src="/js/motoboy.js" defer></script>
+
+  <section>
+    <div class="search">
+      <input type="text" placeholder="Pesquisar motoboy pelo nome">
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Taxa Fixa</th>
+          <th>R$/Km</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Motoboys aqui -->
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+</body>
+<footer>
+  Onion Delivery © 2026 — OnionCode
+</footer>
+
+</html>

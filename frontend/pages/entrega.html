@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Onion Delivery • Entregas</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">Onion Delivery</div>
+
+  <nav>
+    <a href="../index.html">Início</a>
+    <a href="entrega.html" class="active">Entregas</a>
+    <a href="motoboy.html">Motoboys</a>
+    <a href="#">Relatórios</a>
+  </nav>
+
+  <div></div>
+</header>
+
+<main>
+
+  <!-- ===== CADASTRO DE ENTREGA ===== -->
+  <form>
+    <h2>Nova Entrega</h2>
+
+    <div class="form-grid">
+
+      <label>
+        Motoboy
+        <select>
+          <option>Selecione</option>
+          <option>João</option>
+          <option>Maria</option>
+        </select>
+      </label>
+
+      <label>
+        Cliente
+        <input type="text">
+      </label>
+
+      <label>
+        Telefone
+        <input type="text">
+      </label>
+
+      <label>
+        Rua
+        <input type="text">
+      </label>
+
+      <label>
+        Bairro
+        <input type="text">
+      </label>
+
+      <label>
+        Número
+        <input type="number">
+      </label>
+
+      <label>
+        Km rodados
+        <input type="number">
+      </label>
+
+    </div>
+
+    <button type="submit">Cadastrar Entrega</button>
+  </form>
+
+  <!-- ===== RELATÓRIO ===== -->
+  <section>
+
+    <h2>Relatório de Entregas</h2>
+
+    <!-- FILTROS -->
+    <div class="filters">
+
+      <label>
+        Data
+        <input type="date">
+      </label>
+
+      <label>
+        Cliente / Endereço
+        <input type="text" placeholder="Nome, rua, bairro ou telefone">
+      </label>
+
+      <label>
+        Motoboy
+        <select>
+          <option>Todos</option>
+          <option>João</option>
+          <option>Maria</option>
+        </select>
+      </label>
+
+    </div>
+
+    <!-- TABELA -->
+    <table>
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Motoboy</th>
+          <th>Cliente</th>
+          <th>Endereço</th>
+          <th>Telefone</th>
+          <th>Km</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- entregas -->
+      </tbody>
+    </table>
+
+  </section>
+
+</main>
+
+<footer>
+  Onion Delivery © 2026 — OnionCode
+</footer>
+
+</body>
+</html>
