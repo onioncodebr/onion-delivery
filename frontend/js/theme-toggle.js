@@ -33,10 +33,15 @@ class ThemeToggle {
     toggleBtn.id = 'theme-toggle';
     toggleBtn.className = 'theme-btn';
     toggleBtn.setAttribute('aria-label', 'Alternar tema claro/escuro');
-    // Inline monochrome SVGs inherit color via currentColor
-    const sunSvg = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0"><circle cx="12" cy="12" r="4"/></svg>';
-    const moonSvg = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>';
-    toggleBtn.innerHTML = this.theme === 'dark' ? sunSvg : moonSvg;
+    // Use external monochrome SVG files (path adjusted for pages)
+    const base = location.pathname.includes('/pages/') ? '../' : '';
+    const img = document.createElement('img');
+    img.src = base + (this.theme === 'dark' ? 'img/sun.svg' : 'img/moon.svg');
+    img.alt = 'Tema';
+    img.width = 20;
+    img.height = 20;
+    img.style.display = 'block';
+    toggleBtn.appendChild(img);
     toggleBtn.addEventListener('click', () => this.toggleTheme());
 
     // Botão de configurações
@@ -44,9 +49,13 @@ class ThemeToggle {
     settingsBtn.id = 'settings-btn';
     settingsBtn.className = 'settings-btn';
     settingsBtn.setAttribute('aria-label', 'Abrir configurações');
-    // Inline gear SVG (monochrome)
-    const gearSvg = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0"><circle cx="12" cy="12" r="3"/></svg>';
-    settingsBtn.innerHTML = gearSvg;
+    const gear = document.createElement('img');
+    gear.src = base + 'img/gear.svg';
+    gear.alt = 'Configurações';
+    gear.width = 20;
+    gear.height = 20;
+    gear.style.display = 'block';
+    settingsBtn.appendChild(gear);
     settingsBtn.addEventListener('click', () => this.openSettings());
 
     // Adicionar botões ao container
@@ -67,10 +76,8 @@ class ThemeToggle {
 
     const toggleBtn = document.getElementById('theme-toggle');
     if (toggleBtn) {
-      const toggleBtnEl = document.getElementById('theme-toggle');
-      if (toggleBtnEl) {
-        toggleBtnEl.innerHTML = this.theme === 'dark' ? sunSvg : moonSvg;
-      }
+      const imgEl = document.querySelector('#theme-toggle img');
+      if (imgEl) imgEl.src = (location.pathname.includes('/pages/') ? '../' : '') + (this.theme === 'dark' ? 'img/sun.svg' : 'img/moon.svg');
     }
   }
 

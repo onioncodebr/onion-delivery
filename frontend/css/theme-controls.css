@@ -69,14 +69,24 @@
   width: 20px;
   height: 20px;
   stroke: currentColor;
-  fill: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.5;
+  fill: none;
   display: block;
 }
 
-/* Invert images on dark theme so monochrome files show white */
+/* External images sizing and color handling */
+.theme-btn img,
+.settings-btn img {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+/* Match header text color (default) */
+.theme-controls {
+  color: var(--text-soft);
+}
+
+/* On dark theme, invert monochrome SVGs to appear light */
 body[data-theme="dark"] .theme-btn img,
 body[data-theme="dark"] .settings-btn img {
   filter: invert(1) grayscale(1) brightness(1.2);
