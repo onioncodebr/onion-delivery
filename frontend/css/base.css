@@ -2,8 +2,11 @@
   --bg: #1d2021;
   --bg-soft: #282828;
   --text: #ebdbb2;
+  --text-soft: #d5c4a1;
   --accent: #fe8019;
+  --accent-soft: #fabd2f;
   --border: #3c3836;
+  --border-soft: #504945;
 }
 
 * {
