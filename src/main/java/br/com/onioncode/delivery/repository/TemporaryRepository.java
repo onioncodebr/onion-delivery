@@ -13,6 +13,7 @@ public class TemporaryRepository {
     private static Motoboy m = new Motoboy(1L, "Junior", 3, 18);
     @Getter
     private static List<Motoboy> motoboyDataBase = new ArrayList<>(List.of(m));
+
 }
 
 

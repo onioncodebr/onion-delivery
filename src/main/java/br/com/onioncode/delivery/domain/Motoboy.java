@@ -2,6 +2,7 @@ package br.com.onioncode.delivery.domain;
 
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -14,7 +15,7 @@ public class Motoboy {
     private String name;
     private Integer priceKM;
     private Integer minTaxa;
-    private List<ListaDeEntregas> listaDeEntregas;
+    private List<ListaDeEntregas> listaDeEntregas = new ArrayList<>();
 
     public Motoboy(Long id, String name, Integer priceKM, Integer minTaxa) {
         this.id = id;

@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @Service
 public class MotoboyService {
 
-    private TemporaryRepository tpr = new TemporaryRepository();
+
     private AtomicLong contador = new AtomicLong(1);
 
     public Motoboy create(MotoboyCreateDTO dto) {
@@ -35,7 +35,6 @@ public class MotoboyService {
             }
         }
         return listFiltred;
-
     }
 
     public Motoboy delete(Long id, MotoboyUpdateDTO dto){
