@@ -8,7 +8,6 @@ import lombok.Data;
 
 
 @Data
-@AllArgsConstructor
 public class EntregaCreateDTO {
     @NotBlank
     private String clientName;

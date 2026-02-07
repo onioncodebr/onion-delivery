@@ -3,62 +3,48 @@ package br.com.onioncode.delivery.service;
 import br.com.onioncode.delivery.domain.Motoboy;
 import br.com.onioncode.delivery.dto.MotoboyCreateDTO;
 import br.com.onioncode.delivery.dto.MotoboyUpdateDTO;
-import br.com.onioncode.delivery.repository.TemporaryRepository;
+import br.com.onioncode.delivery.repository.MotoboyRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 
 @Service
+@RequiredArgsConstructor
 public class MotoboyService {
 
+    private final MotoboyRepository motoboyRepository;
 
-    private AtomicLong contador = new AtomicLong(1);
-
-    public Motoboy create(MotoboyCreateDTO dto) {
-        Motoboy motoboy = new Motoboy(contador.getAndIncrement(), dto.getName(), dto.getPriceKM(), dto.getMinTaxa());
-        TemporaryRepository.getMotoboyDataBase().add(motoboy);
-        return motoboy;
+    public List<Motoboy> findAll() {
+        return motoboyRepository.findAll();
     }
 
-    public List<Motoboy> getAllMotoboys() {
-        return TemporaryRepository.getMotoboyDataBase();
+    public Motoboy save(MotoboyCreateDTO dto) {
+        Motoboy motoboy = new Motoboy(dto.getName(), dto.getPriceKM(), dto.getMinTaxa());
+        return motoboyRepository.save(motoboy);
     }
 
-    public List<Motoboy> getMotoboyByName(String param) {
-        List<Motoboy> listFiltred = new ArrayList<>();
-        List<Motoboy> list = TemporaryRepository.getMotoboyDataBase();
-        for(int i = 0; i < list.size(); i++){
-            if (TemporaryRepository.getMotoboyDataBase().get(i).getName().toLowerCase().contains(param.toLowerCase())){
-                listFiltred.add(TemporaryRepository.getMotoboyDataBase().get(i));
-            }
-        }
-        return listFiltred;
+    public Motoboy findById(Long id) {
+        return motoboyRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    public Motoboy delete(Long id, MotoboyUpdateDTO dto){
-        for (Motoboy motoboy : TemporaryRepository.getMotoboyDataBase()){
-            if(motoboy.getId().equals(id)){
-                TemporaryRepository.getMotoboyDataBase().remove(motoboy);
-                return motoboy;
-            }
-        }
-        return null;
+    public List<Motoboy> findByName(String param) {
+        return motoboyRepository.findByNameContainingIgnoreCase(param);
+    }
+
+    public void delete(Long id){
+        motoboyRepository.deleteById(findById(id).getId());
     }
 
     public Motoboy update(Long id, MotoboyUpdateDTO dto) {
-        Motoboy m = new Motoboy();
-        for (int i = 0; i < TemporaryRepository.getMotoboyDataBase().size(); i++){
-            if(TemporaryRepository.getMotoboyDataBase().get(i).getId().equals(id)){
-
-                TemporaryRepository.getMotoboyDataBase().get(i).setName(dto.getName());
-                TemporaryRepository.getMotoboyDataBase().get(i).setMinTaxa(dto.getMinTaxa());
-                TemporaryRepository.getMotoboyDataBase().get(i).setPriceKM(dto.getPriceKM());
-                m = TemporaryRepository.getMotoboyDataBase().get(i);
-            }
-        }
-        return m;
+        Motoboy motoboy = findById(id);
+        motoboy.setName(dto.getName());
+        motoboy.setMin_taxa(dto.getMinTaxa());
+        motoboy.setPrice_km(dto.getPriceKM());
+        return motoboyRepository.save(motoboy);
     }
-
 }
+

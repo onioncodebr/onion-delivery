@@ -4,41 +4,41 @@ import br.com.onioncode.delivery.domain.Motoboy;
 import br.com.onioncode.delivery.dto.MotoboyCreateDTO;
 import br.com.onioncode.delivery.dto.MotoboyUpdateDTO;
 import br.com.onioncode.delivery.service.MotoboyService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://127.0.0.1:5500")
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/motoboys")
 public class MotoboyController {
 
-    @Autowired
-    private MotoboyService mtbs;
+    private final MotoboyService motoboyService;
 
     @PostMapping()
-    public ResponseEntity<Motoboy> CreateMotoboy(@RequestBody MotoboyCreateDTO dto){
-        return ResponseEntity.status(HttpStatus.CREATED).body(mtbs.create(dto));
-    }
-    @GetMapping
-    public List<Motoboy> getAllMotoboys(){
-        return mtbs.getAllMotoboys();
+    public ResponseEntity<Motoboy> CreateMotoboy(@RequestBody MotoboyCreateDTO dto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(motoboyService.save(dto));
     }
 
+    @GetMapping()
+    public ResponseEntity<List<Motoboy>> findAll() {
+        return ResponseEntity.status(HttpStatus.OK).body(motoboyService.findAll());
+    }
     @GetMapping("/{name}")
-    public ResponseEntity<List<Motoboy>> getMotoboyByName(@PathVariable String name){
-        return ResponseEntity.status(HttpStatus.OK).body(mtbs.getMotoboyByName(name));
+    public ResponseEntity<List<Motoboy>> findByName(@PathVariable String name) {
+        return ResponseEntity.status(HttpStatus.OK).body(motoboyService.findByName(name));
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Motoboy> update(@PathVariable Long id, @RequestBody MotoboyUpdateDTO dto){
-        return ResponseEntity.status(HttpStatus.OK).body(mtbs.update(id, dto));
+    public ResponseEntity<Motoboy> update(@PathVariable Long id, @RequestBody MotoboyUpdateDTO dto) {
+        return ResponseEntity.status(HttpStatus.OK).body(motoboyService.update(id, dto));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> delete(@PathVariable Long id, @RequestBody MotoboyUpdateDTO dto) {
-                return ResponseEntity.status(HttpStatus.OK).body(mtbs.delete(id, dto));
-        }
+    public ResponseEntity<Void> deleteById(@PathVariable Long id){
+        motoboyService.delete(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
+}
