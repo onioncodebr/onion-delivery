@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class ListaDeEntregas {
+public class Diarias {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,7 +23,7 @@ public class ListaDeEntregas {
     @ManyToOne
     @JoinColumn(name = "motoboy_id")
     private Motoboy motoboy;
-    public ListaDeEntregas(Long id, LocalDate date, Motoboy motoboy) {
+    public Diarias(Long id, LocalDate date, Motoboy motoboy) {
         this.date = date;
     }
 
