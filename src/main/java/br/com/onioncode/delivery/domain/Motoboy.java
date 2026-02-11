@@ -20,7 +20,7 @@ public class Motoboy {
     private Integer price_km;
     private Integer min_taxa;
     @OneToMany(mappedBy = "motoboy", cascade = CascadeType.ALL)
-    private List<ListaDeEntregas> listaDiariaDeEntregas = new ArrayList<>();
+    private List<Diaria> listaDeDiarias = new ArrayList<>();
 
     public Motoboy(Long id, String name, Integer price_km, Integer min_taxa) {
         this.id = id;

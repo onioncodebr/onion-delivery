@@ -1,4 +1,4 @@
-package br.com.onioncode.delivery.dto;
+package br.com.onioncode.delivery.dto.entrega;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

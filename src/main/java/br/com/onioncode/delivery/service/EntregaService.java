@@ -7,8 +7,5 @@ import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class EntregaService {
-    @Autowired
-    private ListaDeEntregaService listaDeEntregaService;
-    private AtomicLong contador = new AtomicLong(1);
 
 }

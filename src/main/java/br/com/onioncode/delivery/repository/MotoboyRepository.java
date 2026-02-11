@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface MotoboyRepository extends JpaRepository<Motoboy, Long> {
     List<Motoboy> findByNameContainingIgnoreCase(String param);
+
+    Long id(Long id);
 }

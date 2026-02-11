@@ -1,4 +1,4 @@
-package br.com.onioncode.delivery.dto;
+package br.com.onioncode.delivery.dto.motoboy;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

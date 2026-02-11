@@ -18,7 +18,29 @@
     <link rel="stylesheet" href="../css/animations.css">
     <link rel="stylesheet" href="../css/mobile-menu.css">  
     <link rel="stylesheet" href="../css/theme-controls.css">
-    <link rel="stylesheet" href="../css/enhancements.css"></head>
+    <link rel="stylesheet" href="../css/enhancements.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body, .auth-form, .auth-form h2, .auth-form label, .auth-form input, .auth-form button {
+            font-family: "Pacifico", cursive;
+        }
+        #loginOverlay {
+            transition: opacity 2000ms ease;
+            backdrop-filter: blur(2px);
+        }
+        #loginWelcome {
+            animation: floatGlow 3s ease-in-out infinite;
+            letter-spacing: 1px;
+        }
+        @keyframes floatGlow {
+            0% { transform: translateY(6px) scale(1); text-shadow: 0 0 8px rgba(255,255,255,0.2); opacity: 0.85; }
+            50% { transform: translateY(-6px) scale(1.03); text-shadow: 0 0 28px rgba(255,255,255,0.6); opacity: 1; }
+            100% { transform: translateY(6px) scale(1); text-shadow: 0 0 8px rgba(255,255,255,0.2); opacity: 0.85; }
+        }
+    </style>
+</head>
 
 <body>
 
@@ -52,6 +74,10 @@
 
             </div>
 
+            <div id="loginOverlay" style="position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;color:#fff;font-size:2rem;opacity:0;pointer-events:none;transition:opacity 500ms ease;z-index:9999;">
+                <span id="loginWelcome"></span>
+            </div>
+
         </div>
 
     </body>
@@ -62,4 +88,44 @@
 <script src="../js/theme-toggle.js"></script>
 <script src="../js/mobile-menu.js"></script>
 <script src="../js/accessibility.js"></script>
+<script>
+    const loginForm = document.getElementById('loginForm');
+    const usernameEl = document.getElementById('username');
+    const passwordEl = document.getElementById('password');
+    const overlay = document.getElementById('loginOverlay');
+    const welcome = document.getElementById('loginWelcome');
+
+    const sfxSuccess = document.getElementById('sfxSuccess');
+    const sfxError = document.getElementById('sfxError');
+
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = usernameEl.value.trim();
+        const password = passwordEl.value.trim();
+
+        if (username === 'admin' && password === 'admin') {
+            welcome.textContent = `Bem vindo novamente ${username}`;
+            overlay.style.pointerEvents = 'auto';
+            overlay.style.opacity = '1';
+            sfxSuccess.currentTime = 0;
+            sfxSuccess.play().catch(() => {});
+            setTimeout(() => {
+                window.location.href = '../index.html';
+            }, 2800);
+        } else {
+            sfxError.currentTime = 0;
+            sfxError.play().catch(() => {});
+            alert('Usuário ou senha inválidos.');
+        }
+    });
+</script>
+<audio id="sfxSuccess" preload="auto">
+    <source src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=" type="audio/wav">
+</audio>
+<audio id="sfxError" preload="auto">
+    <source src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=" type="audio/wav">
+</audio>
+
+</body>
+
 </html>

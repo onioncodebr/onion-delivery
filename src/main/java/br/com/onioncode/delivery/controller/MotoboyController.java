@@ -1,8 +1,8 @@
 package br.com.onioncode.delivery.controller;
 
 import br.com.onioncode.delivery.domain.Motoboy;
-import br.com.onioncode.delivery.dto.MotoboyCreateDTO;
-import br.com.onioncode.delivery.dto.MotoboyUpdateDTO;
+import br.com.onioncode.delivery.dto.motoboy.MotoboyCreateDTO;
+import br.com.onioncode.delivery.dto.motoboy.MotoboyUpdateDTO;
 import br.com.onioncode.delivery.service.MotoboyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

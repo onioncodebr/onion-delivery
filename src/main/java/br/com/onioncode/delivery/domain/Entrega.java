@@ -1,7 +1,6 @@
 package br.com.onioncode.delivery.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,7 +18,7 @@ public class Entrega {
     private Integer kms;
     @ManyToOne
     @JoinColumn(name = "lista_entrega_id")
-    private ListaDeEntregas listaDeEntregas;
+    private Diaria diaria;
 
     public Entrega(Long  id, String clientName, String rua, String bairro, Integer num, Integer kms) {
         this.id = id;

@@ -10,21 +10,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-public class Diarias {
+public class Diaria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDate date;
-    @OneToMany(mappedBy = "listaDeEntregas",  cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "diaria",  cascade = CascadeType.ALL)
     private List<Entrega> lista = new ArrayList<>();
     @ManyToOne
     @JoinColumn(name = "motoboy_id")
     private Motoboy motoboy;
-    public Diarias(Long id, LocalDate date, Motoboy motoboy) {
+
+    public Diaria(LocalDate date, Motoboy motoboy) {
         this.date = date;
+        this.motoboy = motoboy;
     }
 
 }

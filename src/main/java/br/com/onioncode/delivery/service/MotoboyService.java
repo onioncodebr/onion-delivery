@@ -1,15 +1,14 @@
 package br.com.onioncode.delivery.service;
 
 import br.com.onioncode.delivery.domain.Motoboy;
-import br.com.onioncode.delivery.dto.MotoboyCreateDTO;
-import br.com.onioncode.delivery.dto.MotoboyUpdateDTO;
+import br.com.onioncode.delivery.dto.motoboy.MotoboyCreateDTO;
+import br.com.onioncode.delivery.dto.motoboy.MotoboyUpdateDTO;
 import br.com.onioncode.delivery.repository.MotoboyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
