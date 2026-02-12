@@ -10,5 +10,5 @@ public class EntregaUpdateDTO {
     private String rua;
     private String bairro;
     private Integer num;
-    private Integer kms;
+    private Integer price;
 }

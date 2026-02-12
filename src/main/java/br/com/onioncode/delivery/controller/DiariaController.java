@@ -1,6 +1,7 @@
 package br.com.onioncode.delivery.controller;
 
 import br.com.onioncode.delivery.domain.Diaria;
+import br.com.onioncode.delivery.domain.Motoboy;
 import br.com.onioncode.delivery.dto.diaria.DiariaCreateDTO;
 import br.com.onioncode.delivery.dto.diaria.DiariaResponseDTO;
 import br.com.onioncode.delivery.dto.motoboy.MotoboyResponseDTO;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -25,5 +27,9 @@ public class DiariaController {
     @GetMapping
     public ResponseEntity<List<DiariaResponseDTO>>  getAll(@RequestBody Long motodoyId){
         return ResponseEntity.status(HttpStatus.OK).body(diariaService.getByMotoboy(motodoyId));
+    }
+    @GetMapping("/find")
+    public ResponseEntity<DiariaResponseDTO> getByMotoboyAndNow(@RequestParam Long id, @RequestParam LocalDate date){
+        return ResponseEntity.status(HttpStatus.OK).body(diariaService.findByMotoboyAndDate(id, date));
     }
 }

@@ -2,6 +2,7 @@ package br.com.onioncode.delivery.controller;
 
 import br.com.onioncode.delivery.domain.Motoboy;
 import br.com.onioncode.delivery.dto.motoboy.MotoboyCreateDTO;
+import br.com.onioncode.delivery.dto.motoboy.MotoboyResponseDTO;
 import br.com.onioncode.delivery.dto.motoboy.MotoboyUpdateDTO;
 import br.com.onioncode.delivery.service.MotoboyService;
 import lombok.RequiredArgsConstructor;
@@ -19,12 +20,12 @@ public class MotoboyController {
     private final MotoboyService motoboyService;
 
     @PostMapping()
-    public ResponseEntity<Motoboy> CreateMotoboy(@RequestBody MotoboyCreateDTO dto) {
+    public ResponseEntity<MotoboyResponseDTO> CreateMotoboy(@RequestBody MotoboyCreateDTO dto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(motoboyService.save(dto));
     }
 
     @GetMapping()
-    public ResponseEntity<List<Motoboy>> findAll() {
+    public ResponseEntity<List<MotoboyResponseDTO>> findAll() {
         return ResponseEntity.status(HttpStatus.OK).body(motoboyService.findAll());
     }
     @GetMapping("/{name}")

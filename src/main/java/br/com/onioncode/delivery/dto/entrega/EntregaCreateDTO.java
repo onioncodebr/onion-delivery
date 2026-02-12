@@ -18,5 +18,7 @@ public class EntregaCreateDTO {
     private Integer num;
     @NotNull
     @Positive
-    private Integer kms;
+    private Integer price;
+    @NotNull
+    private Long motoboy_id;
 }

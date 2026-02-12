@@ -5,10 +5,15 @@ import br.com.onioncode.delivery.domain.Motoboy;
 import br.com.onioncode.delivery.dto.diaria.DiariaResponseDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface DiariaRepository extends JpaRepository<Diaria, Long> {
     Diaria findById(long id);
 
     List<Diaria> getDiariasByMotoboy(Motoboy referenceById);
+
+    List<Diaria> getDiariasByDate(LocalDate date);
+
+    Diaria findByMotoboyAndDate(Motoboy motoboy, LocalDate date);
 }

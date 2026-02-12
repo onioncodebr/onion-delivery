@@ -2,6 +2,7 @@ package br.com.onioncode.delivery.service;
 
 import br.com.onioncode.delivery.domain.Motoboy;
 import br.com.onioncode.delivery.dto.motoboy.MotoboyCreateDTO;
+import br.com.onioncode.delivery.dto.motoboy.MotoboyResponseDTO;
 import br.com.onioncode.delivery.dto.motoboy.MotoboyUpdateDTO;
 import br.com.onioncode.delivery.repository.MotoboyRepository;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -17,13 +19,18 @@ public class MotoboyService {
 
     private final MotoboyRepository motoboyRepository;
 
-    public List<Motoboy> findAll() {
-        return motoboyRepository.findAll();
+    public List<MotoboyResponseDTO> findAll() {
+        List<MotoboyResponseDTO> motoboyResponseDTOList = new ArrayList<>();
+        for (Motoboy motoboy : motoboyRepository.findAll()) {
+            motoboyResponseDTOList.add(toResponse(motoboy));
+        }
+        return motoboyResponseDTOList;
     }
 
-    public Motoboy save(MotoboyCreateDTO dto) {
+    public MotoboyResponseDTO save(MotoboyCreateDTO dto) {
         Motoboy motoboy = new Motoboy(dto.getName(), dto.getPriceKM(), dto.getMinTaxa());
-        return motoboyRepository.save(motoboy);
+        motoboyRepository.save(motoboy);
+        return toResponse(motoboy);
     }
 
     public Motoboy findById(Long id) {
@@ -44,6 +51,11 @@ public class MotoboyService {
         motoboy.setMin_taxa(dto.getMinTaxa());
         motoboy.setPrice_km(dto.getPriceKM());
         return motoboyRepository.save(motoboy);
+    }
+
+
+    public MotoboyResponseDTO toResponse(Motoboy motoboy) {
+        return new MotoboyResponseDTO(motoboy.getId(), motoboy.getName(), motoboy.getPrice_km(), motoboy.getMin_taxa());
     }
 }
 

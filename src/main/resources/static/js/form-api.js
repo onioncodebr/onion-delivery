@@ -81,7 +81,7 @@ class FormAPI {
   }
 
   /**
-   * Carregar lista de motoboys
+   * Carregar listaDeEntregas de motoboys
    */
   async loadMotoboysList() {
     try {
@@ -94,7 +94,7 @@ class FormAPI {
   }
 
   /**
-   * Carregar lista de entregas
+   * Carregar listaDeEntregas de entregas
    */
   async loadEntregasList() {
     try {
